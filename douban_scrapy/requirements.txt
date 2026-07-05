@@ -1,0 +1,4 @@
+scrapy>=2.11.0
+itemadapter>=0.8.0
+pymssql>=2.2.0
+flask>=3.0.0

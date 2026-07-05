@@ -1,0 +1,115 @@
+[2026-07-05 22:00:04] 开始爬取，目标总数 10 部（已有 0 部，本次新增 10 部）
+2026-07-05 22:00:04 [scrapy.utils.log] INFO: Scrapy 2.16.0 started (bot: douban_crawler)
+2026-07-05 22:00:04 [scrapy.utils.log] INFO: Versions:
+{'lxml': '6.1.0',
+ 'libxml2': '2.11.9',
+ 'cssselect': '1.4.0',
+ 'parsel': '1.11.0',
+ 'w3lib': '2.4.1',
+ 'Twisted': '26.4.0',
+ 'Python': '3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 '
+           '64 bit (AMD64)]',
+ 'pyOpenSSL': '25.1.0 (OpenSSL 3.5.1 1 Jul 2025)',
+ 'cryptography': '45.0.5',
+ 'Platform': 'Windows-11-10.0.26100-SP0'}
+2026-07-05 22:00:04 [douban_movie] INFO: 已加载豆瓣 Cookie（每次请求自动读取 cookie.txt）
+2026-07-05 22:00:04 [scrapy.addons] INFO: Enabled addons:
+[]
+2026-07-05 22:00:04 [scrapy.extensions.telnet] INFO: Telnet Password: 05200e228affe550
+2026-07-05 22:00:04 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.logcount.LogCount',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2026-07-05 22:00:04 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 30,
+ 'AUTOTHROTTLE_TARGET_CONCURRENCY': 0.5,
+ 'BOT_NAME': 'douban_crawler',
+ 'CONCURRENT_REQUESTS': 1,
+ 'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+ 'DOWNLOAD_DELAY': 4,
+ 'DOWNLOAD_TIMEOUT': 30,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'LOG_LEVEL': 'INFO',
+ 'NEWSPIDER_MODULE': 'douban_crawler.spiders',
+ 'RETRY_HTTP_CODES': [500, 502, 503, 504, 408, 429, 403],
+ 'RETRY_TIMES': 5,
+ 'SPIDER_MODULES': ['douban_crawler.spiders'],
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+2026-07-05 22:00:05 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2026-07-05 22:00:05 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.start.StartSpiderMiddleware',
+ 'scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2026-07-05 22:00:05 [scrapy.middleware] INFO: Enabled item pipelines:
+['douban_crawler.pipelines.CsvExportPipeline']
+2026-07-05 22:00:05 [py.warnings] WARNING: E:\CTFTools\python3.13.5\Lib\site-packages\scrapy\pipelines\__init__.py:43: ScrapyDeprecationWarning: CsvExportPipeline.open_spider() requires a spider argument, this is deprecated and the argument will not be passed in future Scrapy versions. If you need to access the spider instance you can save the crawler instance passed to from_crawler() and use its spider attribute.
+  self._check_mw_method_spider_arg(mw.open_spider)
+
+2026-07-05 22:00:05 [py.warnings] WARNING: E:\CTFTools\python3.13.5\Lib\site-packages\scrapy\pipelines\__init__.py:46: ScrapyDeprecationWarning: CsvExportPipeline.close_spider() requires a spider argument, this is deprecated and the argument will not be passed in future Scrapy versions. If you need to access the spider instance you can save the crawler instance passed to from_crawler() and use its spider attribute.
+  self._check_mw_method_spider_arg(mw.close_spider)
+
+2026-07-05 22:00:05 [py.warnings] WARNING: E:\CTFTools\python3.13.5\Lib\site-packages\scrapy\pipelines\__init__.py:49: ScrapyDeprecationWarning: CsvExportPipeline.process_item() requires a spider argument, this is deprecated and the argument will not be passed in future Scrapy versions. If you need to access the spider instance you can save the crawler instance passed to from_crawler() and use its spider attribute.
+  self._check_mw_method_spider_arg(mw.process_item)
+
+2026-07-05 22:00:05 [scrapy.core.engine] INFO: Spider opened
+2026-07-05 22:00:05 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2026-07-05 22:00:05 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2026-07-05 22:00:06 [douban_movie] INFO: 分类 [剧情] start=0，已收集 10/10 部电影 ID（含历史 0 部）
+2026-07-05 22:00:06 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/37061179>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:11 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/35517044>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:17 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/36808520>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:23 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/36372941>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:29 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/36812879>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:36 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/36953973>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:43 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/37116446>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:49 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/35465012>: HTTP status code is not handled or not allowed
+2026-07-05 22:00:55 [scrapy.spidermiddlewares.httperror] INFO: Ignoring response <400 https://m.douban.com/rexxar/api/v2/movie/37071123>: HTTP status code is not handled or not allowed
+2026-07-05 22:01:05 [scrapy.extensions.logstats] INFO: Crawled 11 pages (at 11 pages/min), scraped 1 items (at 1 items/min)
+2026-07-05 22:01:14 [scrapy.core.engine] INFO: Closing spider (finished)
+2026-07-05 22:01:14 [douban_crawler.pipelines] INFO: CSV 已保存至 output：共 1 部电影（本次新增 1），10 条短评（本次新增 10）
+2026-07-05 22:01:14 [douban_movie] INFO: 爬虫已停止，原因: finished
+2026-07-05 22:01:14 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 5565,
+ 'downloader/request_count': 13,
+ 'downloader/request_method_count/GET': 13,
+ 'downloader/response_bytes': 42795,
+ 'downloader/response_count': 13,
+ 'downloader/response_status_count/200': 4,
+ 'downloader/response_status_count/400': 9,
+ 'elapsed_time_seconds': 68.46929599996656,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2026, 7, 5, 14, 1, 14, 144990, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 7072,
+ 'httpcompression/response_count': 1,
+ 'httperror/response_ignored_count': 9,
+ 'httperror/response_ignored_status_count/400': 9,
+ 'item_scraped_count': 12,
+ 'items_per_minute': 10.588235294117647,
+ 'log_count/INFO': 16,
+ 'request_depth_max': 2,
+ 'response_received_count': 13,
+ 'responses_per_minute': 11.470588235294118,
+ 'scheduler/dequeued': 13,
+ 'scheduler/dequeued/memory': 13,
+ 'scheduler/enqueued': 13,
+ 'scheduler/enqueued/memory': 13,
+ 'start_time': datetime.datetime(2026, 7, 5, 14, 0, 5, 675694, tzinfo=datetime.timezone.utc)}
+2026-07-05 22:01:14 [scrapy.core.engine] INFO: Spider closed (finished)

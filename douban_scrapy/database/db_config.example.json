@@ -1,0 +1,8 @@
+{
+  "server": "localhost",
+  "port": 1433,
+  "database": "DoubanMovies",
+  "user": "sa",
+  "password": "你的密码",
+  "use_windows_auth": false
+}

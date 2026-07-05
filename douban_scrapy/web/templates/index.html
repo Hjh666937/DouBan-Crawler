@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豆瓣电影爬虫控制台</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-inner">
+                <div class="brand">
+                    <span class="brand-icon">🎬</span>
+                    <div>
+                        <h1>豆瓣电影爬虫</h1>
+                        <p>数据采集 · 分类浏览 · 数据库导入</p>
+                    </div>
+                </div>
+                <div class="task-status">
+                    <span class="status-dot idle" id="statusDot"></span>
+                    <span id="taskMessage">系统空闲</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <aside class="sidebar">
+                <section class="panel">
+                    <h2>数据概览</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-label">已爬电影</span>
+                            <strong id="statMovies">0</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">短评条数</span>
+                            <strong id="statReviewRows">0</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">短评已完成</span>
+                            <strong id="statComments">0</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">电影类型</span>
+                            <strong id="statGenres">0</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>爬取任务</h2>
+                    <div class="action-group">
+                        <label>电影数量</label>
+                        <div class="presets">
+                            <button class="btn btn-outline" onclick="setCount(10)">10</button>
+                            <button class="btn btn-outline" onclick="setCount(100)">100</button>
+                            <button class="btn btn-outline" onclick="setCount(500)">500</button>
+                            <button class="btn btn-outline" onclick="setCount(1000)">1000</button>
+                            <button class="btn btn-outline" onclick="setCount(10000)">10000</button>
+                        </div>
+                        <input type="number" id="targetCount" min="1" max="50000" value="500" placeholder="例如 500">
+                        <p class="cookie-hint">目标为 CSV 中电影总数；多次爬取会自动合并，不会覆盖旧数据</p>
+                        <button class="btn btn-primary" id="btnStart" onclick="startCrawl()">开始爬取</button>
+                        <button class="btn btn-danger" id="btnStop" onclick="stopCrawl()" disabled>停止爬取</button>
+                    </div>
+                    <p class="cookie-hint">出现 403 或需换 Cookie：先停止 → 粘贴新 Cookie → 保存 → 重新开始</p>
+                    <div class="action-group">
+                        <label>豆瓣 Cookie</label>
+                        <textarea id="cookieInput" rows="3" placeholder="从浏览器 F12 → Network → 复制 Cookie..."></textarea>
+                        <div class="btn-row">
+                            <button class="btn btn-outline" onclick="saveCookie()">保存 Cookie</button>
+                            <button class="btn btn-secondary" id="btnStopSave" onclick="stopAndSaveCookie()" disabled>停止并保存 Cookie</button>
+                        </div>
+                    </div>
+                    <div id="logBox" class="log-box">等待任务...</div>
+                </section>
+
+                <section class="panel">
+                    <h2>数据库导入</h2>
+                    <button class="btn btn-outline" onclick="initDb()">创建数据库/表</button>
+                    <button class="btn btn-secondary" onclick="importCsv()">导入 CSV 到数据库</button>
+                </section>
+
+                <details class="panel">
+                    <summary>系统设置</summary>
+                    <div class="action-group">
+                        <label>数据库服务器</label>
+                        <input type="text" id="dbServer" value="localhost">
+                        <input type="number" id="dbPort" value="1433" placeholder="端口">
+                        <input type="text" id="dbName" value="DoubanMovies" placeholder="数据库名">
+                        <input type="text" id="dbUser" value="sa" placeholder="用户名">
+                        <input type="password" id="dbPassword" placeholder="密码">
+                        <label><input type="checkbox" id="dbWinAuth"> Windows 身份验证</label>
+                        <button class="btn btn-outline" onclick="saveDbConfig()">保存数据库配置</button>
+                    </div>
+                </details>
+            </aside>
+
+            <section class="content">
+                <div class="toolbar">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="搜索片名、导演、演员..." onkeydown="if(event.key==='Enter')loadMovies()">
+                        <button class="btn btn-small btn-primary" onclick="loadMovies()">搜索</button>
+                    </div>
+                    <button class="btn btn-small btn-ghost" onclick="refreshAll()">刷新数据</button>
+                </div>
+
+                <div class="genre-bar" id="genreBar">
+                    <button class="genre-chip active" data-genre="">全部</button>
+                </div>
+
+                <div class="result-meta">
+                    <span id="resultCount">共 0 部电影</span>
+                </div>
+
+                <div class="movie-grid" id="movieGrid"></div>
+                <div class="pagination" id="pagination"></div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body" id="modalBody">加载中...</div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
